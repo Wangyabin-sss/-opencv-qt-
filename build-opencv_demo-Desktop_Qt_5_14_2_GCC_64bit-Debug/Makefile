@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../opencv_demo -I. -isystem /usr/local/include/opencv4 -isystem /usr/local/include/opencv4/opencv2 -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../opencv_demo -I. -I/usr/local/opencv4.5.0/include/opencv4 -I/usr/local/opencv4.5.0/include/opencv4/opencv2 -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,10 +37,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = opencv_demo1.0.0
-DISTDIR = /home/ubuntu/桌面/qt/opencv/opencv3/build-opencv_demo-Desktop_Qt_5_14_2_GCC_64bit-Debug/.tmp/opencv_demo1.0.0
+DISTDIR = /home/ubuntu/Desktop/qt/opencv/opencv3/build-opencv_demo-Desktop_Qt_5_14_2_GCC_64bit-Debug/.tmp/opencv_demo1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/lib
-LIBS          = $(SUBLIBS) /usr/local/lib/libopencv_highgui.so /usr/local/lib/libopencv_core.so /usr/local/lib/libopencv_imgproc.so /usr/local/lib/libopencv_imgcodecs.so /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/lib/libQt5Widgets.so /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/lib/libQt5Gui.so /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) /usr/local/opencv4.5.0/lib/libopencv_highgui.so /usr/local/opencv4.5.0/lib/libopencv_core.so /usr/local/opencv4.5.0/lib/libopencv_imgproc.so /usr/local/opencv4.5.0/lib/libopencv_imgcodecs.so /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/lib/libQt5Widgets.so /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/lib/libQt5Gui.so /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -93,11 +93,16 @@ DIST          = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.pr
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bodymovin_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_core.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_designer.pri \
@@ -130,6 +135,8 @@ DIST          = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.pr
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_network.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
@@ -144,6 +151,8 @@ DIST          = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.pr
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_positioningquick_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qml.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
@@ -156,6 +165,16 @@ DIST          = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.pr
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qmlworkerscript_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3d.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3d_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dassetimport.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dassetimport_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3drender.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3drender_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3druntimerender.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dutils.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dutils_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
@@ -169,6 +188,10 @@ DIST          = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.pr
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_script.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
@@ -190,11 +213,22 @@ DIST          = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.pr
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_vulkan_support_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandclient.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandclient_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandcompositor.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandcompositor_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webview.pri \
@@ -213,6 +247,7 @@ DIST          = /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.pr
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/qt_config.prf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_post.prf \
+		../opencv_demo/.qmake.stash \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/toolchain.prf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -282,11 +317,16 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bodymovin_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_core.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_designer.pri \
@@ -319,6 +359,8 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_network.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
@@ -333,6 +375,8 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_positioningquick_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qml.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
@@ -345,6 +389,16 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qmlworkerscript_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3d.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3d_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dassetimport.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dassetimport_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3drender.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3drender_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3druntimerender.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dutils.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dutils_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
@@ -358,6 +412,10 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_script.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
@@ -379,11 +437,22 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_vulkan_support_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandclient.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandclient_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandcompositor.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandcompositor_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webview.pri \
@@ -402,6 +471,7 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/qt_config.prf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/toolchain.prf \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -460,11 +530,16 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bodymovin_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_charts.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_core.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_designer.pri:
@@ -497,6 +572,8 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_network.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri:
@@ -511,6 +588,8 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_positioningquick_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qml.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri:
@@ -523,6 +602,16 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qmlworkerscript_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3d.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3d_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dassetimport.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dassetimport_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3drender.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3drender_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3druntimerender.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3druntimerender_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dutils.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick3dutils_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
@@ -536,6 +625,10 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_script.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri:
@@ -557,11 +650,22 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_vulkan_support_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandclient.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandclient_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandcompositor.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_waylandcompositor_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri:
+/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/modules/qt_lib_webview.pri:
@@ -580,6 +684,7 @@ Makefile: ../opencv_demo/opencv_demo.pro /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mks
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/qt_config.prf:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/toolchain.prf:
 /home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/features/default_pre.prf:
@@ -761,10 +866,112 @@ moc_mainwindow.cpp: ../opencv_demo/mainwindow.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qicon.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/opencv.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/opencv_modules.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvdef.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/cvconfig.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/hal/interface.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cv_cpu_helper.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/hal/msa_macros.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/fast_math.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/version.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/base.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/neon_utils.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/vsx_utils.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/check.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/traits.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/matx.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/saturate.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/types.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/mat.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/bufferpool.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/mat.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/persistence.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/operations.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utility.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utils/instrumentation.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utils/tls.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/optim.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/ovx.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/calib3d.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/features2d.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/miniflann.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/defines.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/config.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/affine.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dnn.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/async.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/version.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dict.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/layer.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/flann_base.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/general.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/matrix.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/params.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/any.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/saving.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/nn_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/result_set.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/all_indices.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kdtree_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/dynamic_bitset.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/dist.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/heap.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/allocator.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/random.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kdtree_single_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kmeans_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/logger.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/composite_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/linear_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/lsh_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/lsh_table.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/autotuned_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/ground_truth.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/index_testing.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/timer.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/sampling.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/highgui.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/imgcodecs.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/videoio.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/imgproc.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/ml.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/ml/ml.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/objdetect.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/photo.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/warpers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda_types.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/util.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/camera.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video/tracking.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video/background_segm.hpp \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/bin/moc
-	/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/ubuntu/桌面/qt/opencv/opencv3/build-opencv_demo-Desktop_Qt_5_14_2_GCC_64bit-Debug/moc_predefs.h -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/ubuntu/桌面/qt/opencv/opencv3/opencv_demo -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../opencv_demo/mainwindow.h -o moc_mainwindow.cpp
+	/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/ubuntu/Desktop/qt/opencv/opencv3/build-opencv_demo-Desktop_Qt_5_14_2_GCC_64bit-Debug/moc_predefs.h -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/ubuntu/Desktop/qt/opencv/opencv3/opencv_demo -I/usr/local/opencv4.5.0/include/opencv4 -I/usr/local/opencv4.5.0/include/opencv4/opencv2 -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../opencv_demo/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -895,6 +1102,108 @@ main.o: ../opencv_demo/main.cpp ../opencv_demo/mainwindow.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qicon.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/opencv.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/opencv_modules.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvdef.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/cvconfig.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/hal/interface.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cv_cpu_helper.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/hal/msa_macros.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/fast_math.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/version.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/base.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/neon_utils.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/vsx_utils.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/check.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/traits.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/matx.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/saturate.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/types.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/mat.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/bufferpool.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/mat.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/persistence.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/operations.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utility.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utils/instrumentation.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utils/tls.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/optim.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/ovx.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/calib3d.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/features2d.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/miniflann.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/defines.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/config.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/affine.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dnn.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/async.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/version.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dict.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/layer.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/flann_base.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/general.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/matrix.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/params.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/any.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/saving.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/nn_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/result_set.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/all_indices.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kdtree_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/dynamic_bitset.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/dist.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/heap.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/allocator.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/random.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kdtree_single_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kmeans_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/logger.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/composite_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/linear_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/lsh_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/lsh_table.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/autotuned_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/ground_truth.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/index_testing.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/timer.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/sampling.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/highgui.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/imgcodecs.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/videoio.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/imgproc.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/ml.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/ml/ml.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/objdetect.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/photo.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/warpers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda_types.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/util.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/camera.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video/tracking.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video/background_segm.hpp \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qapplication.h \
@@ -1013,8 +1322,124 @@ mainwindow.o: ../opencv_demo/mainwindow.cpp ../opencv_demo/mainwindow.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qicon.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/opencv.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/opencv_modules.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvdef.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/cvconfig.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/hal/interface.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cv_cpu_helper.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/hal/msa_macros.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/fast_math.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/version.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/base.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/neon_utils.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/vsx_utils.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/check.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/traits.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/matx.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/saturate.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/types.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/mat.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/bufferpool.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/mat.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/persistence.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/operations.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cvstd.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utility.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utils/instrumentation.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/utils/tls.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/optim.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/ovx.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/calib3d.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/features2d.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/miniflann.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/defines.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/config.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/affine.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dnn.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/async.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/version.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dict.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/layer.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/flann_base.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/general.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/matrix.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/params.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/any.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/saving.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/nn_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/result_set.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/all_indices.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kdtree_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/dynamic_bitset.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/dist.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/heap.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/allocator.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/random.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kdtree_single_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/kmeans_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/logger.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/composite_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/linear_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/lsh_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/lsh_table.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/autotuned_index.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/ground_truth.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/index_testing.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/timer.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/flann/sampling.h \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/highgui.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/imgcodecs.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/videoio.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/imgproc.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/ml.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/ml/ml.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/objdetect.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/photo.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/warpers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda_types.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/core/cuda.inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/util.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/camera.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video/tracking.hpp \
+		/usr/local/opencv4.5.0/include/opencv4/opencv2/video/background_segm.hpp \
 		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qapplication.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qeventloop.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qguiapplication.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qinputmethod.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLabel \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QStatusBar \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/ubuntu/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../opencv_demo/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

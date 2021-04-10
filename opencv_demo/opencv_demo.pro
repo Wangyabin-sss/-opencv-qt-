@@ -30,22 +30,22 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-INCLUDEPATH += /usr/local/include/opencv4 \
-               /usr/local/include/opencv4/opencv2
+INCLUDEPATH += /usr/local/opencv4.5.0/include/opencv4 \
+               /usr/local/opencv4.5.0/include/opencv4/opencv2
 #这里INCLUDEPATH的路径是本人的安装位置，自己在写入的时候一定要查看清楚
-LIBS += /usr/local/lib/libopencv_highgui.so \
-       /usr/local/lib/libopencv_core.so    \
-       /usr/local/lib/libopencv_imgproc.so  \
-       /usr/local/lib/libopencv_imgcodecs.so
+LIBS += /usr/local/opencv4.5.0/lib/libopencv_highgui.so \
+       /usr/local/opencv4.5.0/lib/libopencv_core.so    \
+       /usr/local/opencv4.5.0/lib/libopencv_imgproc.so  \
+       /usr/local/opencv4.5.0/lib/libopencv_imgcodecs.so
 
-#INCLUDEPATH +=   /usr/local/opencv3.3.1/include \
-#                /usr/local/opencv3.3.1/include/opencv \
-#               /usr/local/opencv3.3.1/include/opencv2
+#INCLUDEPATH +=   /usr/local/arm/opencv3.4.4/include \
+#                /usr/local/arm/opencv3.4.4/include/opencv \
+#               /usr/local/arm/opencv3.4.4/include/opencv2
 ##这里INCLUDEPATH的路径是本人的安装位置，自己在写入的时候一定要查看清楚
-#LIBS += /usr/local/opencv3.3.1/lib/libopencv_highgui.so \
-#       /usr/local/opencv3.3.1/lib/libopencv_core.so    \
-#       /usr/local/opencv3.3.1/lib/libopencv_imgproc.so  \
-#       /usr/local/opencv3.3.1/lib/libopencv_imgcodecs.so
+#LIBS += /usr/local/arm/opencv3.4.4/lib/libopencv_highgui.so \
+#       /usr/local/arm/opencv3.4.4/lib/libopencv_core.so    \
+#       /usr/local/arm/opencv3.4.4/lib/libopencv_imgproc.so  \
+#       /usr/local/arm/opencv3.4.4/lib/libopencv_imgcodecs.so
 
 
 
