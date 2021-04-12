@@ -170,21 +170,29 @@ uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[])
     std::cout<<y1<<" "<<yd<<std::endl; //得到水平投影上极点 及高度
 
     int x[14]={0},xflag=0;
-    for(int i=0,j=0,k=0;i<width;i++)  //遍历垂直投影找出字符起始点
+    for(int i=0,j=0,k=0,pixall=0;i<width;i++)  //遍历垂直投影找出字符起始点
     {
-        if(ver[i]>2&&xflag==0)
+        if(ver[i]>=2&&xflag==0)
         {
             x[j]=i;
             j++;
             xflag=1;
         }
-        if(ver[i]<=2&&xflag==1)
+        if(ver[i]<2&&xflag==1)
         {
             x[j]=i;
-            if(x[j]-x[j-1]<10)
+            for(k=0;k<x[j]-x[j-1];k++) //判断字符的像素和,白色像素不能小于x
+                pixall+=ver[k];
+            if(pixall<10)
                 j--;
             else
-                j++;
+            {
+                if(x[j]-x[j-1]<10)  //判断字符大小，宽不能小于10像素
+                    j--;
+                else
+                    j++;
+            }
+
             xflag=0;
         }
 
