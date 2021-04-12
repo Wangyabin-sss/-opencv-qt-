@@ -80,7 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
     cv::imshow("车牌二值化",ROIbin);
 
     cv::Mat ROIstr[7];
-    ROI_strcat(ROIbin,ROIstr);
+    ROI_strcut(ROIbin,ROIstr);
     char strname[5];
     for(int i=0;i<7;i++)
     {
@@ -127,7 +127,7 @@ QImage  Mat2QImage(cv::Mat& cvImg)
 
 }
 
-uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[])
+uchar ROI_strcut(cv::Mat& ROIbin,cv::Mat ROIstr[])
 {
     int width = ROIbin.cols;
     int hight = ROIbin.rows;
@@ -169,8 +169,8 @@ uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[])
 
     std::cout<<y1<<" "<<yd<<std::endl; //得到水平投影上极点 及高度
 
-    int x[14]={0},xflag=0;
-    for(int i=0,j=0,k=0,pixall=0;i<width;i++)  //遍历垂直投影找出字符起始点
+    int x[14]={0},xflag=0,j=0;
+    for(int i=0,k=0,pixall=0;i<width;i++)  //遍历垂直投影找出字符起始点
     {
         if(ver[i]>=2&&xflag==0)
         {
@@ -183,11 +183,11 @@ uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[])
             x[j]=i;
             for(k=0;k<x[j]-x[j-1];k++) //判断字符的像素和,白色像素不能小于x
                 pixall+=ver[k];
-            if(pixall<10)
+            if(pixall<30)
                 j--;
             else
             {
-                if(x[j]-x[j-1]<10)  //判断字符大小，宽不能小于10像素
+                if(x[j]-x[j-1]<10)  //判断字符宽度，宽不能小于x像素
                     j--;
                 else
                     j++;
@@ -196,10 +196,13 @@ uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[])
             xflag=0;
         }
 
-
-        if(j>=14)
-            break;
     }
+    std::cout<<"j: "<<j<<std::endl;
+    if(j<14)
+        return -1; //获取的字符少于7个
+    if(j>15)
+        return -2; //获取的字符多于7个
+
     for(int i=0;i<14;i++)
         std::cout<<x[i]<<" "; //得到垂直投影每个字符的前后极点(7个字符)
     std::cout<<std::endl;
