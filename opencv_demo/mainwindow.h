@@ -24,6 +24,6 @@ private:
 };
 
 QImage  Mat2QImage(cv::Mat& cvImg);
-std::vector<cv::Mat> ROI_strcat(cv::Mat& ROIbin);
+uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[]);
 
 #endif // MAINWINDOW_H

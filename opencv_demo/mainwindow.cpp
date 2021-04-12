@@ -78,7 +78,16 @@ MainWindow::MainWindow(QWidget *parent)
     cv::imshow("车牌灰度图",ROIgray);
     cv::threshold(ROIgray,ROIbin,150, 255, cv::THRESH_BINARY);  //二值化
     cv::imshow("车牌二值化",ROIbin);
-    std::vector<cv::Mat> ROIstr=ROI_strcat(ROIbin);
+
+    cv::Mat ROIstr[7];
+    ROI_strcat(ROIbin,ROIstr);
+    char strname[5];
+    for(int i=0;i<7;i++)
+    {
+        sprintf(strname,"str%d",i);
+        cv::imshow(strname,ROIstr[i]);
+    }
+
 }
 
 MainWindow::~MainWindow()
@@ -118,9 +127,8 @@ QImage  Mat2QImage(cv::Mat& cvImg)
 
 }
 
-std::vector<cv::Mat> ROI_strcat(cv::Mat& ROIbin)
+uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[])
 {
-    std::vector<cv::Mat> ROIstr;
     int width = ROIbin.cols;
     int hight = ROIbin.rows;
     int hor[hight],ver[width]; //横 像素和，竖 像素和
@@ -131,27 +139,76 @@ std::vector<cv::Mat> ROI_strcat(cv::Mat& ROIbin)
         for(int w=0;w<width;w++)
         {
             uchar pix=ROIbin.at<uchar>(h,w);
-            std::cout<<(int)pix<<" ";
             if(pix!=0)
             {
                 hor[h]++;
                 ver[w]++;
             }
         }
-        std::cout<<std::endl;
     }
     std::cout<<"宽度"<<width<<std::endl;
     std::cout<<"高度"<<hight<<std::endl;
 
     for(int i=0;i<width;i++)
-        std::cout<<(int)ver[i]<<" ";
+        std::cout<<(int)ver[i]<<" ";  //垂直投影
     std::cout<<std::endl;
     for(int i=0;i<hight;i++)
-        std::cout<<(int)hor[i]<<" ";
+        std::cout<<(int)hor[i]<<" ";  //水平投影
     std::cout<<std::endl;
 
-    return ROIstr;
+    int y1=0,yd=0;
+    for(int i=0;i<hight;i++)
+    {
+        if(hor[i]>10)
+            yd++;
+        if(i>hight/2)
+            continue;
+        if(hor[i]<10)
+            y1++;
+    }
+
+    std::cout<<y1<<" "<<yd<<std::endl; //得到水平投影上极点 及高度
+
+    int x[14]={0},xflag=0;
+    for(int i=0,j=0;i<width;i++)
+    {
+        if(ver[i]>5&&xflag==0)
+        {
+            x[j]=i;
+            j++;
+            xflag=1;
+        }
+        if(ver[i]<5&&xflag==1)
+        {
+            x[j]=i;
+            j++;
+            xflag=0;
+        }
+        if(j>=14)
+            break;
+    }
+    for(int i=0;i<14;i++)
+        std::cout<<x[i]<<" "; //得到垂直投影每个字符的前后极点(7个字符)
+    std::cout<<std::endl;
+
+    for(int i=0,j=0;i<7;i++)
+    {
+        cv::Rect area(x[j],y1,x[j+1]-x[j],yd);
+        j++;
+        cv::Mat ROI(ROIbin,area);
+        ROIstr[i] = ROI.clone();
+    }
+
+    return 0;
 }
+
+
+
+
+
+
+
+
 
 
 
