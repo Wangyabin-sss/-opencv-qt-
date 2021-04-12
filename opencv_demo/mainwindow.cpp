@@ -188,6 +188,7 @@ uchar ROI_strcat(cv::Mat& ROIbin,cv::Mat ROIstr[])
             xflag=0;
         }
 
+
         if(j>=14)
             break;
     }
